@@ -9,7 +9,7 @@ const categories = (sequelize, DataTypes) => {
     },
     name: DataTypes.STRING,
   }, {
-    tableName: 'categories',
+    tableName: 'Categories',
     timestamps: false,
   });
 

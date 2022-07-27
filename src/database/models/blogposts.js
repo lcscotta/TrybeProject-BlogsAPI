@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     published: DataTypes.DATE,
     updated: DataTypes.DATE,
   }, {
-    tableName: 'blogPosts',
+    tableName: 'BlogPosts',
     createdAt: 'published',
     updatedAt: 'updated',
   });
