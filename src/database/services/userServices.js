@@ -1,6 +1,6 @@
 const Joi = require('joi');
 // const bcrypt = require('bcrypt-nodejs');
-const { User } = require('../models/index');
+const { User } = require('../models/user');
 const jwtService = require('./jsonwebtoken');
 
 const schema = Joi.object({

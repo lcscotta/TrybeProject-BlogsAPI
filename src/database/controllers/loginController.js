@@ -1,4 +1,4 @@
-import { validarLogin } from '../services/loginServices';
+const { validarLogin } = require('../services/loginServices');
 
 const singIn = async (req, res, next) => {
   try {
@@ -12,6 +12,4 @@ const singIn = async (req, res, next) => {
   }
 };
 
-export default {
-  singIn,
-};
+module.exports = { singIn }; 

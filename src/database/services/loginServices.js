@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const { User } = require('../models/index');
+const { User } = require('../models/user');
 const jwtService = require('./jsonwebtoken');
 
 const schema = Joi.object({

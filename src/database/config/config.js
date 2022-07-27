@@ -22,9 +22,11 @@ const options = {
   logging: process.env.DEBUG !== 'false',
 };
 
-export const development = {
-  ...options,
-};
-export const test = {
-  ...options,
+module.exports = {
+  development: {
+    ...options,
+  },
+  test: {
+    ...options,
+  },
 };

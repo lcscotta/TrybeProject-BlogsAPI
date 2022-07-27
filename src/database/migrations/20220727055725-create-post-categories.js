@@ -1,6 +1,6 @@
 'use strict';
-
-export async function up(queryInterface, Sequelize) {
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('PostCategories', {
         postId: {
             allowNull: false,
@@ -21,7 +21,8 @@ export async function up(queryInterface, Sequelize) {
             primaryKey: true,
         },
     });
-}
-export async function down(queryInterface) {
+  },
+  async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('PostCategories');
+  },
 }

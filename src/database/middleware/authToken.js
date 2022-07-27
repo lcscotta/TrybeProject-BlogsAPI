@@ -13,6 +13,6 @@ const authenticateToken = async (req, res, next) => {
   }
 };
 
-export default {
+module.exports = {
   authenticateToken,
 };
