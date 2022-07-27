@@ -1,18 +1,19 @@
 const Sequelize = require('sequelize');
 
-const { object, string, array } = require('joi');
+// const { object, string, array } = require('joi');
+const Joi = require('joi');
 const { User } = require('../models/user');
 const { BlogPost } = require('../models/blogposts');
-const { PostCategory } = require('../models/postcategories');
-const { Category } = require('../models/categories');
+const { postcategories } = require('../models/postcategories');
+const { Category } = require('../models/category');
 const { development } = require('../config/config');
 
 const sequelize = new Sequelize(development);
 
-const schema = object({
-  title: string().required(),
-  content: string().required(),
-  categoryIds: array().min(1).required(),
+const schema = Joi.object({
+  title: Joi.string().required(),
+  content: Joi.string().required(),
+  categoryIds: Joi.array().min(1).required(),
 });
 
 const addBPost = async (title, content, categoryIds, data) => {
@@ -31,7 +32,7 @@ const addBPost = async (title, content, categoryIds, data) => {
 );
     console.log('BLOG CREATE:', bp);
     const newC = categoryIds.map((e) => ({ postId: bp.dataValues.id, categoryId: e }));
-    await PostCategory.bulkCreate(newC, { transaction: t });
+    await postcategories.bulkCreate(newC, { transaction: t });
     await t.commit();
     return bp;
   } catch (e) {

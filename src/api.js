@@ -15,7 +15,7 @@ app.use(express.json());
 app.use('/login', loginRouter);
 app.use(errorMiddleware);
 app.use('/user', userRouter);
-app.use('/categories', categoryRouter);
+app.use('/category', categoryRouter);
 app.use('/post', blogpostRouter);
 
 // É importante exportar a constante `app`,
