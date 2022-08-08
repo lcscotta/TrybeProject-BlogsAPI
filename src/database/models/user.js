@@ -1,20 +1,38 @@
 'use strict';
-module.exports = (sequelize, DataTypes) => {
+//JSdocs
+  /**
+   * @param {import('sequelize').Sequelize } sequelize 
+   * @param {import('sequelize').DataTypes} DataTypes 
+   */
+const createUserModel = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    id: { type: DataTypes.INTEGER, primaryKey: true },
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+    },
     displayName: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
-    image: DataTypes.STRING
+    image: DataTypes.STRING,
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE,
   }, {
-    tableName: 'Users',
-    timestamps: false,
-  });
+    tableName: 'Users'
+  })
 
   User.associate = (models) => {
     User.hasMany(models.BlogPost, {
-      foreignKey:'id'
+      foreignKey: 'userId',
+      as: 'blogPosts',
     });
+  //   User.hasMany(models.PostCategory, {
+  //     foreignKey: 'userId',
+  //     as: 'postCategories',
+  //   });
   }
   return User;
 };
+
+module.exports = createUserModel;
